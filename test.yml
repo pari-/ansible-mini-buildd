@@ -1,0 +1,12 @@
+---
+
+- hosts: "all"
+  roles:
+    - role: "ansible-mini-buildd"
+      tags:
+        - "mini-buildd"
+  post_tasks:
+    - block:
+        - include: "tests/test_mini_buildd.yml"
+      tags:
+        - "tests"

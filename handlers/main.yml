@@ -1,0 +1,6 @@
+---
+
+- name: "restart mini-buildd"
+  service:
+    name: "{{ mini_buildd_service_name }}"
+    state: "restarted"

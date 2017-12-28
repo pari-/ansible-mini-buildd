@@ -1,0 +1,21 @@
+---
+
+mini_buildd_admin_password: "unsecureDefaultPassword"
+mini_buildd_cache_valid_time: 3600
+mini_buildd_connection_delay: 5
+mini_buildd_connection_retries: 60
+mini_buildd_default_release: "{{ ansible_distribution_release|lower }}-backports"
+mini_buildd_listen_address: "{{ ansible_default_ipv4['address'] }}"
+mini_buildd_listen_port: 8066
+mini_buildd_package_list:
+  - "mini-buildd"
+mini_buildd_pre_default_release: "{{ mini_buildd_default_release }}"
+mini_buildd_pre_package_list:
+  - "apt-transport-https"
+  - "ca-certificates"
+  - "haveged"
+mini_buildd_repo_list: []
+mini_buildd_service_name: "mini-buildd"
+mini_buildd_supported_distro_list:
+  - "stretch"
+mini_buildd_update_cache: "yes"

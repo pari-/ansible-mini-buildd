@@ -1,0 +1,15 @@
+---
+
+galaxy_info:
+  author: "Patrick Ringl"
+  dependencies: []
+  description: "An Ansible role which installs and configures mini-buildd"
+  galaxy_tags:
+    - "mini-buildd"
+  license: "MIT"
+  min_ansible_version: "2.1.6.0"
+  platforms:
+    - name: "Debian"
+      versions:
+        - "jessie"
+        - "stretch"

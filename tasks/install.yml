@@ -1,0 +1,43 @@
+---
+
+- name: "add additional apt keys"
+  apt_key:
+    id: "{{ item.key.id | default(omit) }}"
+    url: "{{ item.key.url | default(omit) }}"
+    keyserver: "{{ item.key.keyserver | default(omit) }}"
+    validate_certs: "{{ item.key.validate_certs | default(omit) }}"
+    state: "present"
+  when:
+    - "item.key is defined"
+    - "item.key"
+    - "item.key.id is defined and item.key.id or item.key.url is defined and item.key.url"
+  with_items:
+    - "{{ mini_buildd_repo_list }}"
+
+- name: "add additional apt repositories"
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: "present"
+  when:
+    - "item.repo is defined"
+    - "item.repo"
+  with_items:
+    - "{{ mini_buildd_repo_list }}"
+
+- name: "set the initial 'admin'-user password"
+  no_log: True
+  debconf:
+    name: "mini-buildd"
+    question: "mini-buildd/admin_password"
+    value: "{{ mini_buildd_admin_password }}"
+    vtype: "password"
+
+- name: "install packages"
+  apt:
+    name: "{{ item }}"
+    update_cache: "{{ mini_buildd_update_cache|default(omit) }}"
+    cache_valid_time: "{{ mini_buildd_cache_valid_time|default(omit) }}"
+    state: "present"
+    default_release: "{{ mini_buildd_default_release|default(omit) }}"
+  with_items:
+    - "{{ mini_buildd_package_list }}"

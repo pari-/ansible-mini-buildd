@@ -1,0 +1,17 @@
+---
+
+- name: "wait for mini-buildd to become ready"
+  uri:
+    url: "http://{{ mini_buildd_listen_address }}:{{ mini_buildd_listen_port }}/mini_buildd/"
+  register: "result"
+  until: "result|success"
+  retries: "{{ mini_buildd_connection_retries }}"
+  delay: "{{ mini_buildd_connection_delay }}"
+  changed_when: False
+  check_mode: "no"
+
+- name: "output where to find the mini-buildd instance"
+  debug:
+    msg: "http://{{ mini_buildd_listen_address }}:{{ mini_buildd_listen_port }}/mini_buildd/"
+  when:
+    - "result is success"

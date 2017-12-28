@@ -1,0 +1,7 @@
+---
+
+- name: "ensure the service is started and enabled at boot"
+  service:
+    name: "{{ mini_buildd_service_name }}"
+    state: "started"
+    enabled: "yes"
