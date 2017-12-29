@@ -5,3 +5,4 @@
     name: "{{ mini_buildd_service_name }}"
     state: "started"
     enabled: "yes"
+    use: "systemd"

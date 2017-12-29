@@ -31,6 +31,7 @@
     question: "mini-buildd/admin_password"
     value: "{{ mini_buildd_admin_password }}"
     vtype: "password"
+  changed_when: False
 
 - name: "install packages"
   apt:
