@@ -21,7 +21,7 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: st
 
 Ansible version compatibility:
 
-- __2.4.2.0__ (current version in use for development of this role)
+- __2.4.3.0__ (current version in use for development of this role)
 - 2.3.3.0
 - 2.2.3.0
 
