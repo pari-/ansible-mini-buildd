@@ -12,7 +12,7 @@ env:
   global:
     - "IMAGE=irap/docker-debian-ansible:stretch"
   matrix:
-    - "ANSIBLE_VERSION=2.4.2.0"
+    - "ANSIBLE_VERSION=2.4.3.0"
     - "ANSIBLE_VERSION=2.3.3.0"
     - "ANSIBLE_VERSION=2.2.3.0"
 language: "python"
