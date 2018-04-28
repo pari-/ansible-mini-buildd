@@ -19,11 +19,7 @@ An Ansible role which installs and configures mini-buildd
 
 Currently this role is developed for and tested on Debian GNU/Linux (release: stretch).
 
-Ansible version compatibility:
-
-- __2.4.3.0__ (current version in use for development of this role)
-- 2.3.3.0
-- 2.2.3.0
+Ansible version compatibility: [Dockerfile](https://github.com/pari-/docker-debian-ansible/blob/master/debian/stretch/Dockerfile)
 
 ## Example
 

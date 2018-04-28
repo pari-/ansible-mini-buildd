@@ -12,17 +12,21 @@ env:
   global:
     - "IMAGE=irap/docker-debian-ansible:stretch"
   matrix:
-    - "ANSIBLE_VERSION=2.4.3.0"
-    - "ANSIBLE_VERSION=2.3.3.0"
-    - "ANSIBLE_VERSION=2.2.3.0"
+    - "NTH_SUPPORTED_ANSIBLE_VERSION=1"
+    - "NTH_SUPPORTED_ANSIBLE_VERSION=2"
+    - "NTH_SUPPORTED_ANSIBLE_VERSION=3"
+    - "NTH_SUPPORTED_ANSIBLE_VERSION=4"
 language: "python"
 notifications:
   email: false
 python:
   - "2.7"
 script:
-  - "wget -O ${PWD}/run.sh https://raw.githubusercontent.com/pari-/docker-debian-ansible/master/run.sh"
-  - "chmod +x ${PWD}/run.sh"
-  - "${PWD}/run.sh"
+    - "wget -O ${PWD}/run.sh https://raw.githubusercontent.com/pari-/docker-debian-ansible/master/run.sh"
+    - "wget -O ${PWD}/extract_ansible_version.sh https://raw.githubusercontent.com/pari-/docker-debian-ansible/master/extract_ansible_version.sh"
+    - "wget -O ${PWD}/Dockerfile https://raw.githubusercontent.com/pari-/docker-debian-ansible/master/debian/stretch/Dockerfile"
+    - "chmod +x ${PWD}/run.sh"
+    - "chmod +x ${PWD}/extract_ansible_version.sh"
+    - 'export ANSIBLE_VERSION=$(./extract_ansible_version.sh Dockerfile ${NTH_SUPPORTED_ANSIBLE_VERSION}) && ${PWD}/run.sh'
 services: "docker"
 sudo: "required"
